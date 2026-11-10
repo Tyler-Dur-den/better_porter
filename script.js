@@ -1,7 +1,7 @@
 // ==========================================
 // 0. AUTHENTICATION LOGIC (API Fetch)
 // ==========================================
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://logistics-backend.onrender.com";
 
 const authContainer = document.getElementById('auth-container');
 const appContainer = document.getElementById('app-container');
@@ -139,7 +139,7 @@ function startWebSocket(role) {
     if (ws) ws.close();
     if (watchId) navigator.geolocation.clearWatch(watchId);
 
-    ws = new WebSocket(`ws://127.0.0.1:8000/ws/tracking/${currentRideId}`);
+    ws = new WebSocket(`wss://logistics-backend.onrender.com/ws/tracking/${currentRideId}`);
 
     ws.onopen = () => {
         console.log(`Connected to ride tracker as ${role}`);
