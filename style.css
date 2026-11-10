@@ -1,0 +1,134 @@
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+}
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background: #1e3a8a;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.role-selector button {
+    padding: 0.5rem 1.5rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.role-selector button.active {
+    background: #fbbf24;
+    color: #111827;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+#map {
+    flex: 2;
+    height: 100%;
+}
+
+#controls {
+    flex: 1;
+    background: white;
+    padding: 2rem;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.05);
+    overflow-y: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+}
+
+#calc-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+#calc-btn:hover {
+    background: #059669;
+}
+
+#price-result {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    color: #111827;
+}
+/* Auth UI Styles */
+#auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e3a8a;
+}
+
+.auth-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 300px;
+}
+
+.auth-box h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.auth-buttons button {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+#btn-login { background: #3b82f6; }
+#btn-register { background: #10b981; }

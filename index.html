@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics Platform Prototype</title>
+    <!-- Leaflet & Geocoder CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Auth Section -->
+    <div id="auth-container">
+        <div class="auth-box">
+            <h2>Login / Register</h2>
+            <input type="text" id="auth-phone" placeholder="Phone Number" />
+            <input type="password" id="auth-password" placeholder="Password" />
+            <select id="auth-role">
+                <option value="user">User</option>
+                <option value="driver">Driver</option>
+            </select>
+            <div class="auth-buttons">
+                <button id="btn-login">Login</button>
+                <button id="btn-register">Register</button>
+            </div>
+            <p id="auth-message" style="color: red;"></p>
+        </div>
+    </div>
+    
+    <!-- App Section (Hidden by default until login) -->
+    <div id="app-container" style="display: none;">    
+        <header>
+            <h1>Delivery Portal</h1>
+            <div class="role-selector">
+                <button id="btn-user" class="active">User</button>
+                <button id="btn-driver">Driver</button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Map Container -->
+            <div id="map"></div>
+            
+            <!-- Pricing Engine Simulator & Booking -->
+            <div id="controls">
+                <h2>Estimate Fare</h2>
+                <label>Pickup Location: 
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="pickup-loc" readonly>
+                        <button id="btn-gps" style="background: #3b82f6; color: white; border: none; padding: 0.5rem; cursor: pointer; border-radius: 4px;">📍 GPS</button>
+                    </div>
+                </label>
+                <label>Dropoff Location: 
+                    <input type="text" id="dropoff-loc" readonly placeholder="Drag pin or use map search icon">
+                </label>
+                <label>Vehicle Type: 
+                    <select id="vehicle">
+                        <option value="bike">2-Wheeler</option>
+                        <option value="truck">Mini-Truck</option>
+                    </select>
+                </label>
+                
+                <button id="calc-btn">Calculate Price</button>
+                
+                <!-- Tax & Price Breakdown -->
+                <div id="price-breakdown" style="display: none;">
+                    <div class="breakdown-row">
+                        <span>Price</span>
+                        <span id="bd-price">₹0.00</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span>Taxes (18% GST)</span>
+                        <span id="bd-tax">₹0.00</span>
+                    </div>
+                    <hr>
+                    <div class="breakdown-row total-row">
+                        <span>Total</span>
+                        <span id="bd-total">₹0.00</span>
+                    </div>
+                </div>
+                <p id="price-error" style="color: red; margin-top: 1rem;"></p>
+
+                <!-- Booking Actions -->
+                <button id="btn-confirm" style="display: none; width: 100%; padding: 1rem; background: #2563eb; color: white; border: none; font-weight: bold; border-radius: 4px; margin-top: 1rem; cursor: pointer;">Confirm Booking</button>
+                <p id="booking-message" style="margin-top: 1rem; text-align: center; font-weight: bold;"></p>
+            </div>
+            <!-- DRIVER DASHBOARD (Hidden by default) -->
+            <div id="driver-dashboard" style="display: none; width: 100%; max-width: 400px; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <h2>Available Rides</h2>
+                <button id="btn-refresh-rides" style="width: 100%; padding: 0.75rem; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 1rem;">Refresh Feed</button>
+                <div id="rides-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Rides will be injected here by JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS (MUST load before Geocoder) -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    
+    <!-- Custom Application Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
